@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "target": "ES2017",
+        "outDir": "test",
+        "strict": true,
+        "esModuleInterop": true,
+        "jsx": "react",
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ]
+}
