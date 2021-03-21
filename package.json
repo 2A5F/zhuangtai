@@ -18,7 +18,17 @@
   "homepage": "https://github.com/2A5F/ZhuangTai#readme",
   "keywords": [],
   "devDependencies": {
+    "@types/react": "^17.0.3",
+    "mobx": "^6.1.8",
+    "react": "^17.0.1",
     "rollup": "^2.42.1",
     "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "libsugar": "^2.3.0"
+  },
+  "peerDependencies": {
+    "mobx": "^6.1.8",
+    "react": "^17.0.1"
   }
 }
