@@ -28,10 +28,10 @@ export function useStore<S extends AnyStore>(store: S, argf?: () => StoreArgs<S>
     })[0]
 }
 
-export function usePath<T, R>(store: Instance<T>, path: (store: T) => R): R {
-    return path(store.val) // todo
+export function usePath<T, R>(store: T, path: (store: T) => R): R {
+    return path(store) // todo
 }
 
-export function useAction<S, A extends Action<S, any, any>>(store: Instance<S>, action: A): ActionInstance<A> {
-    return useState(() => make(store.val, action))[0]
+export function useAction<S, A extends Action<S, any, any>>(store: S, action: A): ActionInstance<A> {
+    return useState(() => make(store, action))[0]
 }

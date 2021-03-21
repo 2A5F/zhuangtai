@@ -49,6 +49,7 @@ const Actions = new WeakSet<AnyAction>()
 
 export function action<S extends AnyStore, A extends IAction<StoreType<S>, never>>(store: S, action: A): Action<StoreType<S>, A, never>
 export function action<B extends AnyAction, A extends IAction<ActionStore<B>, B>>(base: B, action: A): Action<ActionStore<B>, A, B>
+export function action<S, A extends IAction<S, never>>(store: S, action: A): Action<S, A, never>
 export function action<A extends IAction<any, any>>(base: any, action: A): AnyAction {
     let r: AnyAction
     if (Actions.has(base)) r = { action, base }
