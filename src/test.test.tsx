@@ -6,9 +6,15 @@ const Count = store(class {
     count = 1
 })
 
-const Counter = action(Count, {
-    inc([self]) {
-        self.count++
+const Adder = action(Count, {
+    add([self], v: number) {
+        self.count += v
+    }
+})
+
+const Counter = action(Adder, {
+    inc([, base]) {
+        base.add(1)
     }
 })
 

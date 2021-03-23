@@ -21,7 +21,7 @@ function $makeAction<S, A extends Action<S, any, any>>(store: S, action: A): Act
     const obj = action.base == null ? {} : base = Object.create(($makeAction as any)(store, action.base))
     for (const [k, v] of Object.entries(action.action) as [string, any][]) {
         if (typeof v !== 'function') Object.defineProperty(obj, k, { value: v })
-        const bindf = function (...args: any) { return v.call(obj, [obj, base], ...args) }
+        const bindf = function (...args: any) { return v.call(obj, [store, base], ...args) }
         Object.defineProperty(obj, k, { value: mobxAction(bindf) })
     }
     return obj
