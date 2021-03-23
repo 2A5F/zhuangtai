@@ -1,10 +1,22 @@
 {
   "name": "zhuangtai",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "state",
-  "main": "index.js",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "browser": "./dist/index.umd.min.js",
+  "umd::main": "./dist/index.umd.js",
+  "types": "./index.d.ts",
+  "typings": "./index.d.ts",
+  "files": [
+    "src/*.ts",
+    "/*.d.ts",
+    "dist/*.js"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c && tsc -p tsconfig.b.json",
+    "build:w": "rollup -cw",
+    "build:tsc": "tsc -p tsconfig.b.json"
   },
   "repository": {
     "type": "git",
@@ -19,9 +31,15 @@
   "keywords": [],
   "devDependencies": {
     "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "acorn-jsx": "^5.3.1",
     "mobx": "^6.1.8",
     "react": "^17.0.1",
+    "react-dom": "^17.0.2",
     "rollup": "^2.42.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.1.0",
     "typescript": "^4.2.3"
   },
   "dependencies": {

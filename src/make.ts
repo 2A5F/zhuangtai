@@ -1,5 +1,5 @@
-import { observable } from "mobx"
-import { ActionInstance, Action, AnyStore, StoreArgs, StoreType, ActionStore, AnyAction, IAction } from "./core"
+import { observable, action as mobxAction } from "mobx"
+import { ActionInstance, Action, AnyStore, StoreArgs, StoreType } from "./core"
 
 //@ts-ignore
 export declare function make<S, A extends Action<S, any, any>>(store: S, action: A): ActionInstance<A>
@@ -22,7 +22,7 @@ function $makeAction<S, A extends Action<S, any, any>>(store: S, action: A): Act
     for (const [k, v] of Object.entries(action.action) as [string, any][]) {
         if (typeof v !== 'function') Object.defineProperty(obj, k, { value: v })
         const bindf = function (...args: any) { return v.call(obj, [obj, base], ...args) }
-        Object.defineProperty(obj, k, { value: bindf })
+        Object.defineProperty(obj, k, { value: mobxAction(bindf) })
     }
     return obj
 }
